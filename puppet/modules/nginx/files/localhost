@@ -1,0 +1,44 @@
+# vagrant/puppet/modules/nginx/files/127.0.0.1
+
+server {
+  listen 80;
+  server_name _;
+  root /var/www/;
+
+  index index.html index.php;
+  autoindex on;
+
+  location / {
+    try_files $uri /index.php;
+    autoindex on;
+  }
+
+  location ~ \.php$ {
+    #fastcgi_pass 127.0.0.1:9000;
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    include fastcgi_params;
+    fastcgi_read_timeout 600; # Set fairly high for debugging
+    fastcgi_intercept_errors on;
+  }
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+
+  #keepalive_timeout ;
+
+  #avoid caches
+  sendfile off;
+  expires off;
+
+  # allow the server to close the connection after a client stops responding. Frees up socket-associated memory.
+  reset_timedout_connection on;
+
+  #perf optimizations
+  tcp_nodelay on;
+
+  gzip on;
+  gzip_comp_level 2;
+  gzip_proxied any;
+  gzip_types text/plain text/css text/javascript application/json application/x-javascript text/xml application/xml application/xml+rss;
+  gzip_disable "msie6";
+}

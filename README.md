@@ -1,7 +1,8 @@
 vagrant-docker
 ==============
 
-Use docker instead of a VM (i.e., virtualbox) in Vagrant as a provider to save system resources (and be more fashinable!)
+Use docker instead of a VM (i.e., virtualbox) in Vagrant as a provider to save system resources
+(and be more *fashionable!*)
 
 Use this sample code to build your own boxes.
 

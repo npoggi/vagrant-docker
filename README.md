@@ -1,4 +1,6 @@
 vagrant-docker
 ==============
 
-Use docker instead of a VM (i.e., virtualbox) in Vagrant
+Use docker instead of a VM (i.e., virtualbox) in Vagrant as a provider
+
+

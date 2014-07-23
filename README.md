@@ -11,7 +11,7 @@ It features Puppet [Chef is optional] and a sample NginX web Server
 ##Simple usage:
 cd vagrant-docker
 
-*vagrant up*
+**vagrant up**
 
 ##Test:
 Navigate to: http://localhost:8080/

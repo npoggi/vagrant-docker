@@ -2,18 +2,25 @@
 # vi: set ft=ruby :
 
 VAGRANTFILE_API_VERSION = "2"
+#avoids having to $ vagrant provider=docker
+VAGRANT_DEFAULT_PROVIDER = "docker"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   #config.vm.box = "base"
   config.vm.provider "docker" do |d|
-    #d.image = "ubuntu:12.04"
-    d.build_dir = "."
-    d.name = 'vagrant-docker'
-    d.has_ssh = true
+    #use a prebuilt image
+      #d.image = "npoggi:vagrant-docker"
 
-    #d.ssh.port = 2222
-    #d.ssh.username = "root"
-    #d.ssh.password = "pass"
+    #build
+      d.build_dir = "."
+      d.name = 'vagrant-docker'
+      d.has_ssh = true
+
+      #in case you don't use defaults in Vagrant
+      #d.ssh.port = 2222
+      #d.ssh.username = "root"
+      #d.ssh.password = "pass"
   end
 
   config.vm.host_name = "vagrant"

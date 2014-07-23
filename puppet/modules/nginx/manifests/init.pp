@@ -1,4 +1,3 @@
-# vagrant/puppet/modules/nginx/manifests/init.pp
 class nginx {
   # Install the nginx package. This relies on apt-get update
   package { 'nginx':
@@ -32,7 +31,7 @@ class nginx {
     notify => Service['nginx'],
     require => [
       File['vagrant-nginx'],
-      File['default-nginx-disable'],
+      File['default-nginx-disable']
     ],
   }
 }

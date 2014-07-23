@@ -15,7 +15,7 @@ cd vagrant-docker
 
 **vagrant up**
 
-##Test:
+###Test:
 Navigate to: http://localhost:8080/
 
 

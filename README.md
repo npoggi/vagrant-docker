@@ -9,16 +9,17 @@ It features Puppet [Chef is optional] and a sample NginX web Server
 
 
 ##Simple usage:
+####Builds your own docker image from the Dockerfile
 cd vagrant-docker
-
 **vagrant up**
 
 ##Test:
 Navigate to: http://localhost:8080/
 
-Builds your own docker image from the Dockerfile
 
-##Advanced usage: (select your image in a ENV var)
+##Advanced usage:
+#####Select your image in a ENV var
+
 
 ####For a vanilla image built using the same docker file:
 

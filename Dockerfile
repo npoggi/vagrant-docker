@@ -14,11 +14,11 @@ RUN chown -R vagrant: /home/vagrant/.ssh
 RUN adduser vagrant sudo
 RUN echo -n 'vagrant:vagrant' | chpasswd
 
-# Enable universe
-#RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-
 # Thanks to http://docs.docker.io/en/latest/examples/running_ssh_service/
 RUN mkdir /var/run/sshd
+
+#Get the closest mirror.  Thanks @alexm
+RUN sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt/sources.list
 
 # Update things and make sure the required packges are installed
 RUN apt-get update

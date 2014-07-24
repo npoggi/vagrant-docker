@@ -1,8 +1,5 @@
 # Base Vagrant box
 
-#Had problems with rpcbind  https://github.com/dotcloud/docker/issues/1024
-#FROM ubuntu-upstart:precise
-
 FROM ubuntu:12.04
 MAINTAINER Fabio Rehm "fgrehm@gmail.com"
 

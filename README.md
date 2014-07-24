@@ -13,7 +13,7 @@ It features Puppet [Chef is optional] and a sample NginX web Server
 #####Builds your own docker image from the Dockerfile
 cd vagrant-docker
 
-**vagrant up**
+sudo **vagrant up**
 
 ###Test:
 Navigate to: http://localhost:8080/
@@ -25,11 +25,11 @@ Navigate to: http://localhost:8080/
 
 #####For a vanilla image built using the same docker file:
 
-DOCKER_IMAGE='npoggi/vagrant-docker' vagrant up provision
+DOCKER_IMAGE='npoggi/vagrant-docker' sudo vagrant up --provision
 
 #####For a pre-provisioned image with the puppet config (saves time)
 
-DOCKER_IMAGE='npoggi/vagrant-docker-provisioned' vagrant up
+DOCKER_IMAGE='npoggi/vagrant-docker-provisioned' sudo vagrant up --provision
 
 ###Notes:
 In case you switch images do a vagrant provision instead of just vagrant up

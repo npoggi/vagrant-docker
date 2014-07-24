@@ -6,6 +6,11 @@ Use docker instead of a VM (i.e., virtualbox) in Vagrant as a provider to save s
 
 Use this sample code to build your own boxes.
 
+**Read** latest presentation about this project: https://github.com/npoggi/vagrant-docker/blob/master/presentation/NPoggi_Vagrant-Docker.pdf?raw=true
+
+Fork, and send your pull requests!
+
+The image is currently based on Ubuntu:12.04
 It features Puppet [Chef is optional] and a sample NginX web Server
 
 

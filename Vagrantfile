@@ -1,11 +1,7 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 VAGRANTFILE_API_VERSION = '2'
+
 #avoids having to $ vagrant provider=docker
 ENV['VAGRANT_DEFAULT_PROVIDER'] ||= 'docker'
-
-#print 'Loading the Vagrantfile...\n'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -44,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #net ports
     web.vm.network :forwarded_port, host: 8080, guest: 80 #web
 
-    #bash scripts
+    #bash scripts to run before puppet. Basically to install puppet modules
     config.vm.provision :shell, :path => 'bootstrap.sh'
 
     #puppet config

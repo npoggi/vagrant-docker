@@ -27,7 +27,6 @@ Navigate to: http://localhost:8080/
 ###Advanced usage:
 #####Select your image in a ENV var
 
-
 #####For a vanilla image built using the same docker file:
 
 DOCKER_IMAGE='npoggi/vagrant-docker' sudo vagrant up --provision
@@ -37,7 +36,9 @@ DOCKER_IMAGE='npoggi/vagrant-docker' sudo vagrant up --provision
 DOCKER_IMAGE='npoggi/vagrant-docker-provisioned' sudo vagrant up --provision
 
 ###Notes:
-In case you switch images do a vagrant provision instead of just vagrant up
+In case you switch images do a **vagrant provision** (or vagrant up --provision) instead of just vagrant up.
+As *docker* by default stops services if not specified in the Dockerfile.
+Puppet as the provisioner with make sure they are UP!
 
 Originally presented at the *Docker meetup in Barcelona*: http://www.meetup.com/docker-barcelona-spain/events/193336922/
 

@@ -25,7 +25,7 @@ RUN sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt
 #RUN apt-get upgrade -y
 
 #install required packages
-RUN apt-get install -y openssh-server sudo curl wget nfs-common && \
+RUN apt-get install -y apt-utils openssh-server sudo curl wget nfs-common && \
     apt-get clean #cleanup to reduce image size
 
 # Enable passwordless sudo for users under the "sudo" group

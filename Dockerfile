@@ -1,7 +1,18 @@
 # Base Vagrant box
 
 FROM ubuntu:12.04
-MAINTAINER Fabio Rehm "fgrehm@gmail.com"
+
+#Get the closest mirror.  Thanks @alexm
+RUN sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt/sources.list && \
+    `# Update things and make sure the required packges are installed` && \
+    apt-get update
+
+# Optional, upgrade to latest (takes a while), but before install sshd
+#RUN apt-get upgrade -y
+
+#install required packages
+RUN apt-get install -y apt-utils openssh-server sudo curl wget nfs-common && \
+    apt-get clean #cleanup to reduce image size
 
 # Create and configure vagrant user
 RUN useradd --create-home -s /bin/bash vagrant
@@ -18,30 +29,13 @@ RUN mkdir -p /home/vagrant/.ssh && \
     `# Thanks to http://docs.docker.io/en/latest/examples/running_ssh_service/` && \
     mkdir /var/run/sshd
 
-#Get the closest mirror.  Thanks @alexm
-RUN sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt/sources.list && \
-    `# Update things and make sure the required packges are installed` && \
-    apt-get update
-
-# Optional, upgrade to latest (takes a while), but before install sshd
-#RUN apt-get upgrade -y
-
-#install required packages
-RUN apt-get install -y apt-utils openssh-server sudo curl wget nfs-common && \
-    apt-get clean #cleanup to reduce image size
-
-# Enable passwordless sudo for users under the "sudo" group
-RUN sed -i.bkp -e \
-      's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' \
-      /etc/sudoers
-
-# Puppet
-RUN wget http://apt.puppetlabs.com/puppetlabs-release-stable.deb -O /tmp/puppetlabs-release-stable.deb && \
-    dpkg -i /tmp/puppetlabs-release-stable.deb && \
-    apt-get update && \
-    apt-get install puppet puppet-common hiera facter virt-what lsb-release  -y --force-yes && \
-    rm -f /tmp/*.deb && \
-    apt-get clean
+# Puppet (installed from the bootstrap file)
+#RUN wget http://apt.puppetlabs.com/puppetlabs-release-stable.deb -O /tmp/puppetlabs-release-stable.deb && \
+#    dpkg -i /tmp/puppetlabs-release-stable.deb && \
+#    apt-get update && \
+#    apt-get install puppet puppet-common hiera facter virt-what lsb-release  -y --force-yes && \
+#    rm -f /tmp/*.deb && \
+#    apt-get clean
 
 # Optional Chef
 #RUN curl -L https://www.opscode.com/chef/install.sh -k | bash && apt-get clean

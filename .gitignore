@@ -5,18 +5,8 @@
 *.swp
 *.out
 
-#ignore jobs files but create folder
-jobs/*
-!jobs/.git_ignored_folder
-
 #vagrant
 vagrant/.vagrant/*
-
-
-#test PHP file to check the configuration (insecure in production)
-test.php
-#production passwords file
-config.php
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
@@ -66,7 +56,6 @@ com_crashlytics_export_strings.xml
 
 # Executables
 *.exe
-*.out
 *.app
 *.i*86
 *.x86_64
@@ -80,7 +69,6 @@ bin/
 tmp/
 *.tmp
 *.bak
-*.swp
 *~.nib
 local.properties
 .settings/
@@ -95,9 +83,6 @@ local.properties
 
 # CDT-specific
 .cproject
-
-# PDT-specific
-.buildpath
 
 # sbteclipse plugin
 .target

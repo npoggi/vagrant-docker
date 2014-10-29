@@ -1,11 +1,12 @@
 # Base Vagrant box
 
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 
-#Get the closest mirror.  Thanks @alexm
-RUN sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt/sources.list && \
-    `# Update things and make sure the required packges are installed` && \
-    apt-get update
+#Optional, update mirrors speedups updates, but some mirrors sometimes fail
+#RUN sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt/sources.list
+
+#update apt sources
+RUN apt-get update
 
 # Optional, upgrade to latest (takes a while), but before install sshd
 #RUN apt-get upgrade -y
@@ -29,13 +30,13 @@ RUN mkdir -p /home/vagrant/.ssh && \
     `# Thanks to http://docs.docker.io/en/latest/examples/running_ssh_service/` && \
     mkdir /var/run/sshd
 
-# Puppet (installed from the bootstrap file)
-#RUN wget http://apt.puppetlabs.com/puppetlabs-release-stable.deb -O /tmp/puppetlabs-release-stable.deb && \
-#    dpkg -i /tmp/puppetlabs-release-stable.deb && \
-#    apt-get update && \
-#    apt-get install puppet puppet-common hiera facter virt-what lsb-release  -y --force-yes && \
-#    rm -f /tmp/*.deb && \
-#    apt-get clean
+# Puppet
+RUN wget http://apt.puppetlabs.com/puppetlabs-release-stable.deb -O /tmp/puppetlabs-release-stable.deb && \
+    dpkg -i /tmp/puppetlabs-release-stable.deb && \
+    apt-get update && \
+    apt-get install puppet puppet-common hiera facter virt-what lsb-release  -y --force-yes && \
+    rm -f /tmp/*.deb && \
+    apt-get clean
 
 # Optional Chef
 #RUN curl -L https://www.opscode.com/chef/install.sh -k | bash && apt-get clean

@@ -1,6 +1,6 @@
 VAGRANTFILE_API_VERSION = '2'
 
-#avoids having to $ vagrant provider=docker
+#avoids having to $ vagrant up --provider docker
 ENV['VAGRANT_DEFAULT_PROVIDER'] ||= 'docker'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|

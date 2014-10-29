@@ -21,4 +21,3 @@ fi
 for module in "" ; do
   (puppet module list | grep "$module") || puppet module install "$module"
 done
-

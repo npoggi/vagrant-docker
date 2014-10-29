@@ -15,7 +15,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         d.image = ENV['DOCKER_IMAGE']
       else
         #build from the Dockerfile
-        print 'Building from the Dockerfile (if necessary)\n'
         d.build_dir = '.'
         d.name = 'vagrant-docker'
       end

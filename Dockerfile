@@ -9,7 +9,7 @@ FROM ubuntu:14.04
 RUN apt-get update --fix-missing
 
 # Optional, upgrade to latest (takes a while), but before install sshd
-#RUN apt-get upgrade -y
+RUN apt-get upgrade -y
 
 #install required packages
 RUN apt-get install -y apt-utils openssh-server sudo curl wget nfs-common && \

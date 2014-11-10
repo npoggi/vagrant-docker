@@ -6,7 +6,7 @@ FROM ubuntu:14.04
 #RUN sed -i -e 's,http://[^ ]*,mirror://mirrors.ubuntu.com/mirrors.txt,' /etc/apt/sources.list
 
 #update apt sources
-RUN apt-get update
+RUN apt-get update --fix-missing
 
 # Optional, upgrade to latest (takes a while), but before install sshd
 #RUN apt-get upgrade -y

@@ -10,7 +10,7 @@ Use this sample code to build your own boxes.
 
 Fork, and send your pull requests!
 
-The image is currently based on Ubuntu:12.04
+The image is currently based on Ubuntu:14.04
 It features Puppet [Chef is optional] and a sample NginX web Server
 
 

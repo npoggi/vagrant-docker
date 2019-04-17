@@ -44,5 +44,5 @@ RUN wget http://apt.puppetlabs.com/puppetlabs-release-stable.deb -O /tmp/puppetl
 # Expose port 22 for ssh
 EXPOSE 22
 
-#leave the SHH daemon (and container) running
+#leave the SSH daemon (and container) running
 CMD /usr/sbin/sshd -D
